@@ -8,7 +8,30 @@ pipeline{
                 sh 'pwd'
                 sh 'whoami'
                 sh "mkdir \$(date '+%Y%m%d_%H%M%S')"
+                sh 'python3 --version'
+                sh 'npm --version'
             }
         }
     }
 }
+
+
+
+
+
+/* running code on another linux machine (server) is best practice instead of running on jenkins, jenkins triger code then we run on another server
+pipeline{
+    agent {
+        label 'ansible44'
+    }
+    stages{
+        stage('current directory'){
+            steps{
+                sh 'pwd'
+                sh 'whoami'
+                sh "mkdir \$(date '+%Y%m%d_%H%M%S')"
+            }
+        }
+    }
+} 
+*/
